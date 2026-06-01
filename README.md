@@ -257,7 +257,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## 👤 Author
 
-**Alen Mathew**  
+**Alen Sebastian Veliyathuparamban**  
 MSc Data and Computational Science — University College Dublin  
 B.Tech Computer Science & Engineering (Robotics) — VIT  
 [LinkedIn](https://www.linkedin.com/in/your-profile) · [GitHub](https://github.com/your-username)
