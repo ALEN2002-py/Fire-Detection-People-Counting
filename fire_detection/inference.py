@@ -20,8 +20,24 @@ import sys
 import cv2
 import numpy as np
 from PIL import Image
-import tensorflow as tf
-from tensorflow.keras.preprocessing import image as keras_image
+
+# TensorFlow is imported lazily (inside load_model / run_inference) so that
+# the preprocessing and annotation functions can be imported and tested in
+# environments where TensorFlow is not installed (e.g. CI runners).
+keras_image = None  # populated by _import_tensorflow() at runtime
+
+
+def _import_tensorflow():
+    """Import TensorFlow and set the module-level keras_image alias."""
+    global keras_image
+    try:
+        import tensorflow as tf
+        from tensorflow.keras.preprocessing import image as _keras_image
+        keras_image = _keras_image
+        return tf
+    except ImportError:
+        print("[ERROR] TensorFlow is not installed. Run: pip install tensorflow")
+        sys.exit(1)
 
 # ── Configuration ─────────────────────────────────────────────────────────────
 
@@ -33,7 +49,7 @@ CONFIDENCE_THRESHOLD = 0.70     # Minimum confidence to trigger a fire alert
 
 # ── Helper Functions ──────────────────────────────────────────────────────────
 
-def load_model(model_path: str) -> tf.keras.Model:
+def load_model(model_path: str):
     """
     Load the trained Keras model from disk.
 
@@ -47,6 +63,7 @@ def load_model(model_path: str) -> tf.keras.Model:
         SystemExit: If the model file is not found.
     """
     try:
+        tf = _import_tensorflow()
         model = tf.keras.models.load_model(model_path)
         print(f"[INFO] Model loaded from: {model_path}")
         return model
@@ -74,7 +91,7 @@ def preprocess_frame(frame: np.ndarray) -> np.ndarray:
     """
     pil_image = Image.fromarray(frame, "RGB")
     pil_image = pil_image.resize(INPUT_SIZE)
-    img_array = keras_image.img_to_array(pil_image)
+    img_array = np.array(pil_image, dtype=np.float32)  # equivalent to keras img_to_array, no TF needed
     img_array = np.expand_dims(img_array, axis=0) / 255.0
     return img_array
 
@@ -115,7 +132,7 @@ def annotate_frame(frame: np.ndarray, is_fire: bool, confidence: float) -> np.nd
 
 # ── Main Inference Loop ────────────────────────────────────────────────────────
 
-def run_inference(model: tf.keras.Model) -> None:
+def run_inference(model) -> None:
     """
     Open the default webcam and run frame-by-frame fire detection.
 
