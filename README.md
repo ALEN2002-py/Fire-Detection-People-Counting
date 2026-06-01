@@ -5,6 +5,7 @@
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)](https://opencv.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi%20%7C%20Desktop-lightgrey.svg)]()
+![Tests](https://github.com/ALEN2002-py/Fire-Detection-People-Counting/actions/workflows/python-app.yml/badge.svg)
 
 A real-time computer vision system for **fire detection** using a fine-tuned InceptionV3 deep learning model combined with **people counting** using HOG + SVM descriptors. Designed for deployment on edge devices such as Raspberry Pi for smart building safety applications.
 
