@@ -261,4 +261,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 **Alen Sebastian Veliyathuparamban**  
 MSc Data and Computational Science — University College Dublin  
 B.Tech Computer Science & Engineering (Robotics) — VIT  
-[LinkedIn](https://www.linkedin.com/in/alen-sebastian-veliyathuparamban-880748201/) · [GitHub](https://github.com/ALEN2002-py)
+[LinkedIn](https://www.linkedin.com/in/alen-sebastian-veliyathuparamban-880748201/) · [GitHub](https://github.com/ALEN2002-py) . [Medium](https://medium.com/@allanseby2003/building-a-real-time-fire-detection-and-people-counting-system-with-inceptionv3-and-opencv-fcd9277d2471)
