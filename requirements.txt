@@ -1,0 +1,14 @@
+# Core deep learning
+tensorflow>=2.10.0
+keras>=2.10.0
+
+# Computer vision
+opencv-python>=4.5.0
+imutils>=0.5.4
+Pillow>=9.0.0
+
+# Numerical computing
+numpy>=1.21.0
+
+# Visualisation (used in training notebook)
+matplotlib>=3.5.0
