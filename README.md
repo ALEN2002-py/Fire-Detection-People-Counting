@@ -79,7 +79,7 @@ Dense(2, Softmax)  ──►  [Fire | No-Fire]
 1. **Phase 1 — Feature extraction:** Freeze all base layers, train only the custom head with RMSprop.
 2. **Phase 2 — Fine-tuning:** Unfreeze layers from layer 249 onward, retrain with a low SGD learning rate (lr=0.0001, momentum=0.9) to avoid destroying pre-trained weights.
 
-**Dataset:** [DeepQuestAI Fire-Smoke Dataset](https://github.com/DeepQuestAI/Fire-Smoke-Dataset) (Fire / No-Fire binary classification; Smoke class excluded to reduce ambiguity)
+**Dataset:** [Fire-Smoke Dataset](https://github.com/siyuanwu/DFS-FIRE-SMOKE-Dataset) (Fire / No-Fire binary classification; Smoke class excluded to reduce ambiguity)
 
 **Data Augmentation:** Zoom (±15%), horizontal flip, nearest-neighbour fill — applied to training set only.
 
