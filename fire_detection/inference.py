@@ -13,7 +13,7 @@ Requirements:
     - Trained model file: InceptionV3.h5 (in project root or same directory)
     - See train.ipynb for training instructions.
 
-Author: Alen Mathew
+Author: Alen Sebastian
 """
 
 import sys
